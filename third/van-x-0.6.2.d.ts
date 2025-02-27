@@ -1,4 +1,4 @@
-import type { State } from "vanjs-core"
+import type { State } from "./van-1.5.3.min"
 
 export declare const calc: <R>(f: () => R) => R
 export declare const reactive: <T extends object>(obj: T) => T

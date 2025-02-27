@@ -43,7 +43,6 @@ export type Van = Readonly<{
 }>
 //endregion
 
-
 //region types
 export type  Tags = Readonly<Record<string, TagFunc<Element>>> & {
     [K in keyof HTMLElementTagNameMap]: TagFunc<HTMLElementTagNameMap[K]>
