@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <title>vans</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf8">
+    <link type="text/css" href="css/clearfix.css">
+    <script src="/js/vans.iif.js" type="application/javascript"></script>
+</head>
+<body>
+</body>
+<script >
+    (async()=>{
+        window.declares={};
+        let o=(new URLSearchParams(location.search)).has("console"),e=vans.context(window.declares,{shadow:!0});
+        if(o){await (await e.modules.require("vconsole","/js/eruda.js")).default()}
+        window.router=vans.routing.history({window,cache:true,src:`${window.origin}/js`,base:"/",commons:['404']},document.body,e)})();
+</script>
+</html>

@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "sourceRoot": ".",
+    "allowJs": true,
+    "target": "ES2022",
+    "lib": ["DOM","ESNext"],
+    "declaration": true,
+    "typeRoots": ["types"]
+  }
+}
