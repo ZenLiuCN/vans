@@ -1,7 +1,7 @@
 // @ts-ignore
 
 
-declare namespace vans {
+declare namespace Vans {
 
 
     //region Van
@@ -364,3 +364,71 @@ declare namespace vans {
 
     //endregion
 }
+declare namespace Pico {
+    import ChildDom = Vans.ChildDom;
+    import StateView = Vans.StateView;
+    import Prop = Vans.PropsWithKnownKeys;
+    import State = Vans.State;
+    import BindingFunc = Vans.BindingFunc;
+    export const style: {
+        name: string;
+        url: string;
+    };
+    export const Field: (lbl: ChildDom, content: ChildDom, prop?: Prop<HTMLFieldSetElement>) => HTMLFieldSetElement;
+    export const Content: (prop?: Prop<HTMLElement>, style?: string, ...child: ChildDom[]) => HTMLElement;
+    export const ContentFlex: (prop?: Prop<HTMLElement>, style?: string, ...child: ChildDom[]) => HTMLElement;
+    export const Card: (prop?: Prop<HTMLElement> | ChildDom, ...child: ChildDom[]) => HTMLElement;
+    export const Input: (id: string, prop?: Prop<HTMLInputElement> | ChildDom, ...child: ChildDom[]) => HTMLInputElement;
+    export const Validate: (id: string, error: State<string>, prop?: Prop<HTMLInputElement> | ChildDom, ...child: ChildDom[]) => HTMLElement[];
+    export const Switch: (id: string, checked: State<boolean>, labeled: string | (() => string), prop?: Prop<HTMLInputElement>) => HTMLLabelElement;
+    export const Button: (onclick: () => void, style?: ('outline' | 'secondary' | 'contrast')[], prop?: Prop<HTMLButtonElement> | ChildDom, ...child: ChildDom[]) => HTMLButtonElement;
+    export const Footer: (prop?: Prop<HTMLElement> | ChildDom, ...child: ChildDom[]) => HTMLElement;
+    export const Header: (prop?: Prop<HTMLElement> | ChildDom, ...child: ChildDom[]) => HTMLElement;
+    export const Text: (prop?: Prop<HTMLParagraphElement> | ChildDom, ...child: ChildDom[]) => HTMLParagraphElement;
+    export const Form: (prop?: Prop<HTMLFormElement> | ChildDom, ...child: ChildDom[]) => HTMLFormElement;
+    export type kind = 'details' | 'summary';
+    export const Accordion: (elements: {
+        title: ChildDom;
+        dom?: ChildDom[];
+    }[], styler?: (v: {
+        title: ChildDom;
+        dom?: ChildDom[];
+    }, kind: kind) => Record<string, any>) => HTMLDetailsElement[];
+    export const Nav: (menu: ChildDom[], prop?: Prop<HTMLElement>) => HTMLElement;
+    export const Loading: <T extends Element>(s: StateView<Boolean>, label?: StateView<string> | string | (() => string), prop?: Prop<T>) => Prop<T>;
+    export const Tooltip: <T extends HTMLElement>(txt: (() => string) | string, prop?: Prop<T>) => Prop<T>;
+    export const LoadingTooltip: <T extends Element>(tips: (() => string) | string, s: StateView<Boolean>, label?: StateView<string> | string | (() => string), prop?: Prop<T>) => Prop<T>;
+    type AsyncPredicate = () => Promise<boolean>;
+    export const AlertDialog: (id: string, ok: ChildDom, caption: ChildDom, body: State<BindingFunc>, onBeforeOk?: AsyncPredicate, onAfterOk?: Function, props?: Prop<HTMLElement>, animeMills?: number) => HTMLDialogElement;
+    export const ConfirmDialog: (id: string, ok: any, cancel: StateView<string>, caption: ChildDom, body: State<BindingFunc>, onBeforeOk?: AsyncPredicate, onAfterOk?: Function, onBeforeCancel?: AsyncPredicate, onAfterCancel?: Function, props?: Prop<HTMLElement>, animeMills?: number) => HTMLDialogElement;
+    export const ShowDialog: (id: string, onBeforeOpen?: AsyncPredicate, onAfterOpen?: AsyncPredicate, animeMills?: number, autoClose?: number, onBeforeClose?: AsyncPredicate, onAfterClose?: AsyncPredicate) => void;
+    export type Units = {
+        style:typeof style
+        Field: typeof Field
+        Content: typeof Content
+        ContentFlex: typeof ContentFlex
+        Card: typeof Card
+        Input: typeof Input
+        Validate: typeof Validate
+        Switch: typeof Switch
+        Button: typeof Button
+        Footer: typeof Footer
+        Header: typeof Header
+        Text: typeof Text
+        Form: typeof Form
+        Accordion: typeof Accordion
+        Nav: typeof Nav
+        Loading: typeof Loading
+        Tooltip: typeof Tooltip
+        LoadingTooltip: typeof LoadingTooltip
+        AlertDialog: typeof AlertDialog
+        ConfirmDialog: typeof ConfirmDialog
+        ShowDialog: typeof ShowDialog
+    };
+}
+
+declare global {
+    const vans: Vans.Units
+    const pico: Pico.Units
+}
+export {}
