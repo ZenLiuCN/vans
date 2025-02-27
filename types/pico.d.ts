@@ -1,8 +1,12 @@
-import ChildDom = vans.ChildDom;
-import StateView = vans.StateView;
-import Prop = vans.PropsWithKnownKeys;
-import State = vans.State;
-import BindingFunc = vans.BindingFunc;
+import type {
+ChildDom,
+StateView,
+PropsWithKnownKeys as Prop,
+State,
+BindingFunc
+} from "vans.d.ts";
+
+
 export declare const style: {
     name: string;
     url: string;
